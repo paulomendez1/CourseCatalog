@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VtbIQCdQNuUeNwElnSnNjGgl847CSjpNMNfsLKyTVdI=",
+  "Source": "CourseCatalog.API",
+  "BasePath": "_content/CourseCatalog.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
