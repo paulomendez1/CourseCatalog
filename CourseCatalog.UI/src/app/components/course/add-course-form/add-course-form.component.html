@@ -1,0 +1,55 @@
+<mat-card class="card">
+    <h2 class="title" *ngIf="!isEditMode()">Add a new Course</h2>
+    <h2 class="title" *ngIf="isEditMode()">Edit Course</h2>
+    <form [formGroup]="courseForm" class="form-container">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Course Name</mat-label>
+                <input matInput [formControl]="courseForm.controls['courseName']| formControl"
+                    placeholder="Enter the course name">
+                <mat-error *ngIf="courseForm.controls['courseName'].hasError('required')">
+                    Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Room Number</mat-label>
+                <input matInput [formControl]="courseForm.controls['roomNumber'] | formControl"
+                    placeholder="Enter the room number">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Professor Name</mat-label>
+                <input matInput formControlName="professorName" placeholder="Enter the professor name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Professor Email</mat-label>
+                <input matInput formControlName="professorEmail" placeholder="Enter the professor name">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <div class="checkbox-container">
+                <h5>Days Course Runs</h5>
+                <mat-checkbox formControlName="sunday">Sunday</mat-checkbox>
+                <mat-checkbox formControlName="monday">Monday</mat-checkbox>
+                <mat-checkbox formControlName="tuesday">Tuesday</mat-checkbox>
+                <mat-checkbox formControlName="wednesday">Wednesday</mat-checkbox>
+            </div>
+        </div>
+        <div class="col">
+            <div class="checkbox-container" style="margin-top: 30px;">
+                <mat-checkbox formControlName="thursday">Thursday</mat-checkbox>
+                <mat-checkbox formControlName="friday">Friday</mat-checkbox>
+                <mat-checkbox formControlName="saturday">Saturday</mat-checkbox>
+            </div>
+            <mat-error *ngIf="courseForm.hasError('noCheckboxSelected')">
+                At least one day must be selected.
+            </mat-error>
+        </div>
+    </form>
+    <div class="row" style="justify-content: flex-end;">
+        <button mat-raised-button [disabled]="courseForm.invalid" (click)="saveCourse()" id="save-btn"
+            color="accent">Save</button>
+        <button mat-raised-button routerLink="/courses" id="cancel-btn">Cancel</button>
+    </div>
+</mat-card>
